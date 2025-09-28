@@ -4,35 +4,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Сюзан Мкртчян — Услуги</title>
-
-<!-- Подключение шрифта Forum -->
-<link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
-
 <style>
   :root {
-    --bg: #3B2A24;
-    --white: #ffffff;
-    --text: #1a120e;
+    --bg: #1B110E;
+    --btn-bg: linear-gradient(145deg, #ffffff, #e6e0dc);
+    --btn-hover: linear-gradient(145deg, #f5f0ed, #ffffff);
+    --btn-text: #1B110E;
     --accent: #e9e2dd;
-    --hover: #795548;
   }
+
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
-  html, body {
-    height: 100%;
-  }
+
   body {
-    font-family: 'Forum', serif;
-    color: var(--white);
+    font-family: 'Forum', serif; /* Forum для всего сайта */
     background: var(--bg);
+    color: var(--accent);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    line-height: 1.6;
+    position: relative;
+    overflow: hidden;
+
+    /* 🚫 добавь вот эти строки */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
+
+  a, button {
+    pointer-events: auto; /* оставляем кликабельность ссылкам и кнопкам */
+  }
+
 
   main {
     padding: 40px 0;
@@ -413,6 +420,7 @@
   </script>
 </body>
 </html>
+
 
 
 
