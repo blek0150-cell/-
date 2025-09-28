@@ -1,0 +1,210 @@
+<!doctype html>  
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Сюзан Мкртчян — Услуги</title>
+
+  <!-- Подключение шрифта Forum -->
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #3B2A24;
+      --white: #ffffff;
+      --text: #1a120e;
+      --accent: #e9e2dd;
+      --hover: #795548;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Forum', serif;
+      color: var(--white);
+      background: var(--bg);
+      display:flex;
+      flex-direction: column;
+      min-height:100vh;
+    }
+
+    main{ padding-top: 40px; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(16px, 3vw, 32px);
+      width: min(1200px, 100%);
+      margin: 0 auto;
+      padding: clamp(16px, 4vw, 48px);
+      align-items: stretch;
+    }
+    .layout.reverse { direction: rtl; }
+    .layout.reverse > * { direction: ltr; }
+
+    .text-card {
+      background: var(--white);
+      color: var(--text);
+      padding: clamp(18px, 3vw, 36px);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      font-size: 1.2em; /* збільшили базовий текст */
+    }
+    .text-card.visible { opacity: 1; transform: translateY(0); }
+
+    .text-card h1 { 
+      margin-bottom: .5em; 
+      font-size: clamp(32px, 4vw, 48px); /* збільшили заголовки */
+    }
+    .text-card h3 { 
+      margin-top: 1em; 
+      margin-bottom: .5em; 
+      font-size: 1.4em; /* збільшили підзаголовки */
+    }
+    .text-card ul { margin-left: 1.2em; margin-bottom: 1em; }
+    .text-card ul li { 
+      margin-bottom: .5em; 
+      font-size: 1.15em; /* трохи більші елементи списку */
+    }
+
+    .image {
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      overflow: hidden;
+    }
+    .image.visible { opacity: 1; transform: scale(1); }
+    .image img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease-out;
+      will-change: transform;
+    }
+
+    /* Увеличенный текст только в 3-м блоке */
+    section:nth-of-type(3) .text-card { font-size: 1.3em; } /* чуть больше, чем у остальных */
+
+    /* Увеличение картинки только в 3-м блоке */
+    section:nth-of-type(3) .image img {
+      width: 110%;
+      height: auto;
+      max-width: none;
+    }
+
+    @media (max-width: 900px){
+      .layout, .layout.reverse { 
+        grid-template-columns: 1fr; 
+        direction: ltr; 
+      }
+      .image img { max-height: 70vh; width: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="layout">
+      <div class="text-card">
+        <h1>Психологическая сессия</h1>
+        <h3>Как мы работаем:</h3>
+        <ul>
+          <li>Первая установочная сессия длительностью 30 минут — бесплатно</li>
+          <li>На ней мы знакомимся, уточняю ваш запрос, и вместе определяем, насколько мы подходим друг другу</li>
+          <li>Если продолжаем, процесс терапии строится индивидуально под ваш запрос</li>
+          <li>В работе использую разные подходы: спиральная динамика, архетипы, психоанализ, символ-драма</li>
+          <li>Часто комбинирую эти методы для максимального результата</li>
+          <li>Адаптирую процесс под каждого</li>
+        </ul>
+      </div>
+      <div class="image">
+        <img src="c:\Users\Emil\OneDrive\Рабочий стол\сюз\2.avif" alt="Психологическая сессия">
+      </div>
+    </section>
+
+    <section class="layout reverse">
+      <div class="image">
+        <img src="c:\Users\Emil\OneDrive\Рабочий стол\сюз\3.avif" alt="Психология и имидж">
+      </div>
+      <div class="text-card">
+        <h1>Глубинная комплексная работа — психология и имидж</h1>
+        <h3>Кому подходит:</h3>
+        <ul>
+          <li>Тем, кто готов к масштабным внутренним изменениям</li>
+          <li>Тем, кто хочет сочетать трансформации с внешним выражением</li>
+          <li>Тем, кто ищет глубокую работу с личными сценариями</li>
+        </ul>
+        <h3>Как строится работа:</h3>
+        <ul>
+          <li>Формат — сессия 1,5–2 часа</li>
+          <li>Выбор времени и формата индивидуально</li>
+          <li>Выявляем барьеры, жизненные сценарии и архетипы</li>
+          <li>Одновременно работаем над имиджем</li>
+          <li>Создаю «карту личности»</li>
+          <li>По желанию — бренд-бук стиля</li>
+          <li>Ясная стратегия развития</li>
+        </ul>
+        <p><strong>Стоимость:</strong> от 70 000 ֏</p>
+      </div>
+    </section>
+
+    <section class="layout">
+      <div class="text-card">
+        <h1>Глубинная работа — психология, имидж и контент</h1>
+        <h3>Кому подходит:</h3>
+        <ul>
+          <li>Экспертам, блогерам и публичным личностям</li>
+          <li>Тем, кто хочет целостный имидж и контент</li>
+          <li>Тем, кто хочет уверенность и самопрезентацию</li>
+        </ul>
+        <h3>Как строится работа:</h3>
+        <ul>
+          <li>Формат — сессии от 1,5 часов</li>
+          <li>Проработка запроса через психоанализ и архетипы</li>
+          <li>Создание аутентичного имиджа</li>
+          <li>Уверенность перед камерой</li>
+          <li>Стратегия контента</li>
+          <li>Чек-листы и материалы</li>
+        </ul>
+        <p><strong>Стоимость:</strong> от 80 000 ֏</p>
+      </div>
+      <div class="image">
+        <img src="c:\Users\Emil\OneDrive\Рабочий стол\сюз\4.avif" alt="Психология, имидж и контент">
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Появление элементов
+    const elements = document.querySelectorAll('.text-card, .image');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    elements.forEach(el => observer.observe(el));
+
+    // Параллакс для картинок (без конфликта с появлением)
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.image img').forEach(img => {
+        const rect = img.getBoundingClientRect();
+        const offset = rect.top / window.innerHeight;
+        img.style.transform = `translateY(${offset * 20 - 10}px)`;
+      });
+    });
+  </script>
+</body>
+</html>
+

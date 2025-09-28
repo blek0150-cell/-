@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Мій сайт</title>
+  <style>
+    :root {
+      --bg: #1B110E;
+      --btn-bg: linear-gradient(145deg, #ffffff, #e6e0dc);
+      --btn-hover: linear-gradient(145deg, #f5f0ed, #ffffff);
+      --btn-text: #1B110E;
+      --accent: #e9e2dd;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Forum', serif; /* Forum для всего сайта */
+      background: var(--bg);
+      color: var(--accent);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    
+
+    /* Відео-фон */
+    video.bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 5vw;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Кнопки */
+    .cta {
+      display: inline-block;
+      width: 260px;
+      padding: 1.2em 0;
+      text-align: center;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-weight: 600;
+      font-size: clamp(18px, 3vw, 22px);
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+    .cta:hover {
+      background: var(--btn-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+    .cta:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Футер */
+    footer {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      padding: 1.5em;
+      background: transparent;
+      position: relative;
+      z-index: 1;
+    }
+    .social {
+      width: clamp(40px, 8vw, 54px);
+      height: clamp(40px, 8vw, 54px);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: transform 0.2s, background 0.3s;
+    }
+    .social:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .social svg {
+      width: 60%;
+      height: 60%;
+      fill: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Відео фон -->
+  <video class="bg-video" autoplay muted loop playsinline></video>
+
+  <main>
+    <a href="about.html" class="cta">ОБО МНЕ</a>
+    <a href="services.html" class="cta">УСЛУГИ</a>
+    <a href="portfolio.html" class="cta">ПОРТФОЛИО</a>
+  </main>
+
+  <footer>
+    <a class="social" href="https://t.me/syuzant" target="_blank">
+      <svg viewBox="0 0 240 240"><path d="M120 0C53.7 0 0 53.7 0 120s53.7 120 120 120 120-53.7 120-120S186.3 0 120 0zm56.5 86.9l-17.6 82.8c-1.3 6.1-4.7 7.6-9.6 4.8l-26.5-19.6-12.8 12.3c-1.4 1.4-2.6 2.6-5.3 2.6l1.9-26.8 48.7-44c2.1-1.9-0.5-3-3.2-1.1L78.8 123.2 46.2 110.6c-6.2-2-6.3-6.2 1.3-9.1L200 70.1c5.7-1.8 10.7 3.4 7.6 16.8z"/></svg>
+    </a>
+    <a class="social" href="https://www.instagram.com/syuzanmk" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zM12 7.5A4.5 4.5 0 1 0 12 16.5 4.5 4.5 0 0 0 12 7.5zm0 2A2.5 2.5 0 1 1 12 14.5 2.5 2.5 0 0 1 12 9.5zM17.8 6.2a1.05 1.05 0 1 1-.001 2.099A1.05 1.05 0 0 1 17.8 6.2z"/></svg>
+    </a>
+  </footer>
+
+  <script>
+    const videos = [
+      "video/video1.mp4",
+      "video/video2.mp4",
+      "video/video3.mp4",
+      "video/video4.mp4",
+      "video/video5.mp4",
+      "video/video6.mp4",
+    ];
+
+    const videoEl = document.querySelector(".bg-video");
+    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    videoEl.src = randomVideo;
+  </script>
+</body>
+</html>

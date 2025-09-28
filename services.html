@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Услуги - SYUZAN MK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Monotype+Corsiva&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #3B2A24;
+      --white: #ffffff;
+      --accent: #e9e2dd;
+      --hover: #795548;
+    }
+      
+    body {
+      background-color: var(--bg);
+      color: var(--white);
+      font-family: 'Forum', serif;
+      font-size: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    .content {
+      margin: 100px 20px 20px;
+      text-align: center;
+    }
+
+    .services-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    /* Плавное появление */
+    .services-list a {
+      display: block;
+      width: 100%;
+      max-width: 500px;
+      padding: 15px;
+      color: var(--white);
+      background-color: #4E342E;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 24px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease forwards;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .services-list a:nth-child(1) { animation-delay: 0.2s; }
+    .services-list a:nth-child(2) { animation-delay: 0.4s; }
+    .services-list a:nth-child(3) { animation-delay: 0.6s; }
+
+    .services-list a:hover {
+      background-color: var(--hover);
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <section id="services">
+    <div class="content">
+      <h1>Услуги</h1>
+      <div class="services-list">
+        <a href="services1.html">Имидж и контент</a>
+        <a href="psixolog.html">Психология</a>
+        <a href="extra.html">Дополнительные</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

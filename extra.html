@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Об услугах - SYUZAN MK</title>
+
+    <!-- Подключение шрифта Forum -->
+    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #3b2f2f; /* Темно-коричневый фон */
+            color: #ffffff;
+            font-family: 'Forum'; /* Один шрифт на всё */
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            margin: 40px 20px;
+            text-align: center;
+        }
+
+        .section-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .image-text {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .image-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .image-text img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.4s ease;
+        }
+
+        .image-text img:hover {
+            transform: scale(1.05);
+        }
+
+        .text-block {
+            max-width: 600px;
+            text-align: center;
+            font-size: 24px;
+            margin: 0 auto;
+        }
+
+        h1, h2 {
+            color: #ffffff;
+            font-size: 28px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .text-block strong {
+            font-size: 30px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        blockquote {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="content">
+        <h2>ОБ УСЛУГАХ <h2>
+        <div class="section-content">
+            <div class="image-text">
+                <img src="https://static.wixstatic.com/media/c19fe6_85a6de497e184f56bb4b0d73249301fc~mv2.jpg/v1/fill/w_394,h_390,fp_0.71_0.15,q_80,usm_0.66_1.00_0.01,enc_auto/c19fe6_85a6de497e184f56bb4b0d73249301fc~mv2.jpg" alt="Image 1">
+                <p class="text-block"><strong>КОНСУЛЬТАЦИЯ</strong><br>Первый и важнейший этап. Во время консультации мы с вами знакомимся, обсуждаем ваш запрос и только после - принимаем решение о дальнейшей работе.<br>Консультация всегда бесплатна, это может быть как встреча за чашкой кофе, так и звонок.</p>
+            </div>
+
+            <div class="image-text">
+                <p class="text-block"><strong>ШОПИНГ</strong><br>Ответы на часто задаваемые вопросы<br>Шопинг можно провести с любым доступным вам бюджетом и даже без него. Во время него я даю вам методику, по которой вы сможете проводить шопинг самостоятельно.<br>Вещи не обязательно покупать сразу. Вы можете примерить всё, а позже купить/заказать онлайн всё, что вам понравилось. Кроме того, если вы передумаете, их можно вернуть в магазин.<br>Шопинг будет плодотворнее после разбора гардероба.</p>
+                <img src="https://static.wixstatic.com/media/c19fe6_a32b19f923d64ec1bb74d6ced47324bb~mv2.jpg/v1/fill/w_393,h_390,fp_0.52_0.18,q_80,usm_0.66_1.00_0.01,enc_auto/c19fe6_a32b19f923d64ec1bb74d6ced47324bb~mv2.jpg" alt="Image 2">
+            </div>
+
+            <div class="image-text">
+                <img src="https://static.wixstatic.com/media/c19fe6_1398860bccb94581adb6b2c672ee092d~mv2.jpg/v1/fill/w_354,h_351,fp_0.50_0.50,lg_1,q_80,enc_auto/c19fe6_1398860bccb94581adb6b2c672ee092d~mv2.jpg" alt="Image 3">
+                <p class="text-block"><strong>ЧТО В ИТОГЕ?</strong><br>Вы навсегда забудете о такой проблеме, как "нечего надеть" и прочувствуете свой личный стиль.<br>Вы всегда будете чувствовать себя уместно относительно контекста, забудете ощущение неловкости, стеснения. Всё, что останется - ощущение удовольствия.<br>Вы получите гардероб "на миллион" - функциональный, качественный и эстетичный.<br>Окружающие будут делать вам комплименты на улице и оборачиваться вслед вашей харизме.</p>
+            </div>
+
+            <div class="image-text">
+                <blockquote>"Мода проходит, стиль остаётся." — Коко Шанель</blockquote>
+                <img src="https://static.wixstatic.com/media/c19fe6_db741556113a4a9dbdea76d2a5c6a41e~mv2.jpg/v1/fill/w_411,h_320,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c3d10d6f7cbfa5eb8c8c821174f6e8c7.jpg" alt="Image 4">
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("scroll", function() {
+            document.querySelectorAll('.image-text').forEach(function(el) {
+                let rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    el.classList.add('visible');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

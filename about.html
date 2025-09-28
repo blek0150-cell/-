@@ -1,0 +1,183 @@
+<!doctype html> 
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Обо мне — Сюзан Мкртчян</title>
+
+  <!-- Подключаем шрифт Forum -->
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #1B110E;
+      --white: #ffffff;
+      --text: #1a120e;
+      --accent: #e9e2dd;
+      --hover: #5D4037;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Forum', serif; /* Forum для всего сайта */
+      color: var(--white);
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      text-transform: uppercase; /* ВСЕ БУКВЫ БОЛЬШИЕ */
+    }
+
+    /* Сетка */
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(16px, 3vw, 32px);
+      width: min(1400px, 100%);
+      margin: 0 auto;
+      padding: clamp(16px, 4vw, 48px);
+      align-items: stretch;
+      flex: 1;
+      margin-top: 30px;
+    }
+    .left, .right {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+    }
+    .text-card {
+      background: var(--white);
+      color: var(--text);
+      padding: clamp(20px, 4vw, 50px);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .text-card h1 {
+      margin: 0 0 .5em 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+    }
+    .text-card p {
+      margin: 0 0 1em 0;
+      font-size: clamp(16px, 2.1vw, 18px);
+      line-height: 1.6;
+    }
+    .right {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .right img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    .right img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Анимация всплытия */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Цитата */
+    .quote {
+      margin-top: auto;
+      text-align: center;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: #ddd;
+      padding: 2em 1em;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0;
+    }
+    .quote.visible {
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    /* Плавное появление при скролле */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .right { order: 2; min-height: 300px; }
+      .left { order: 1; }
+    }
+  </style>
+</head>
+<body>
+  <main class="layout">
+    <section class="left fade-in">
+      <div class="text-card">
+        <h1>Обо мне</h1>
+        <p>Меня зовут Сюзан Мкртчян</p>
+        <p>Я прошла путь от художника и дизайнера одежды до стилиста-имиджмейкера, контентмейкера и психолога.</p>
+        <p>Может показаться, что эти направления разные и не связаны между собой, но если копнуть глубже, выяснится, что <em>всё это о понимании человека, его внутреннего мира и способах выразить себя</em>. Я объединила все свои ипостаси и навыки, чтобы служить именно тем людям, с кем нас объединяют созвучные взгляды, ценности и подходы. Таких немного, но именно наша совместная работа будет по-настоящему глубокой и эффективной.</p>
+        <p><em>Я не просто создаю образы — я помогаю вам стать главным героем своего личного фильма</em>, где каждый день наполнен смыслом, стилем и уверенностью, в котором вы реализуете то, о чём всегда мечтали, но почему-то не шли к этому.</p>
+        <p>В своей работе я использую инструменты, которые позволяют услышать ваш запрос даже между строк — то, о чём вы сами ещё можете не знать или боитесь признаться себе.</p>
+        <p><em>Я объединяю искусство стиля с психологией, чтобы создавать идеальные декорации: образы, музыку, ароматы и детали, которые вдохновляют, служат наслаждению и гедонизму, наполняют вас удовольствием и силой.</em></p>
+        <p>Моя миссия — помочь вам трансформироваться, идти к своим целям и проживать жизнь наилучшим образом, <em>наслаждаясь каждым моментом и каждым взглядом в зеркало</em>.</p>
+        <p><strong>Какой фильм мы создадим вместе?</strong></p>
+      </div>
+    </section>
+
+    <aside class="right fade-in">
+      <img class="parallax" src="1.avif" alt="Сюзан Мкртчян" />
+    </aside>
+  </main>
+
+  <div class="quote" id="quote">
+    «Посмотрите, как входит в комнату женщина, притягивающая все взгляды. Как она идет, как она садится, какие жесты она делает в разговоре. По классическим меркам она может считаться вполне уродливой, но, несмотря на это, в ее фигуре, ее поведении, ее жестах есть что-то, что составляет стиль и что очень важно именно потому, что все это не какие-то внешние украшения, а принадлежит самому ее существу.» — Коко Шанель
+  </div>
+
+  <script>
+    // Плавное появление блоков при скролле
+    function onScroll() {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // Плавное появление цитаты после загрузки страницы
+    window.addEventListener('load', () => {
+      const quoteEl = document.getElementById('quote');
+      setTimeout(() => {
+        quoteEl.classList.add('visible');
+      }, 500); // задержка перед всплытием
+    });
+  </script>
+</body>
+</html>
+
