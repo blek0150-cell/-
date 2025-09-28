@@ -1,6 +1,121 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  
+  <style>
+    :root {
+      --bg: #1B110E;
+      --btn-bg: linear-gradient(145deg, #ffffff, #e6e0dc);
+      --btn-hover: linear-gradient(145deg, #f5f0ed, #ffffff);
+      --btn-text: #1B110E;
+      --accent: #e9e2dd;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Forum', serif; /* Forum для всего сайта */
+      background: var(--bg);
+      color: var(--accent);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    
+
+    /* Відео-фон */
+    video.bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 5vw;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Кнопки */
+    .cta {
+      display: inline-block;
+      width: 260px;
+      padding: 1.2em 0;
+      text-align: center;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-weight: 600;
+      font-size: clamp(18px, 3vw, 22px);
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+    .cta:hover {
+      background: var(--btn-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+    .cta:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Футер */
+    footer {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      padding: 1.5em;
+      background: transparent;
+      position: relative;
+      z-index: 1;
+    }
+    .social {
+      width: clamp(40px, 8vw, 54px);
+      height: clamp(40px, 8vw, 54px);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: transform 0.2s, background 0.3s;
+    }
+    .social:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .social svg {
+      width: 60%;
+      height: 60%;
+      fill: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Відео фон -->
+  <video class="bg-video" autoplay muted loop playsinline></video>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Услуги - SYUZAN MK</title>
@@ -85,5 +200,47 @@
     </div>
   </section>
 </body>
+  <script>
+(function(){
+  // База відносно поточного HTML (підтримує /repo/ і корінь)
+  const BASE = (document.querySelector('base')?.getAttribute('href'))
+            || (location.pathname.endsWith('/') 
+                ? location.pathname 
+                : location.pathname.replace(/[^/]+$/, '/'));
+
+  const rel = p => new URL(p, location.origin + BASE).pathname;
+
+  const videos = [
+    rel("video/video1.MP4"),
+    rel("video/video2.MP4"),
+    rel("video/video3.MP4"),
+    rel("video/video4.MP4"),
+    rel("video/video5.MP4"),
+    rel("video/video6.MP4"),
+  ];
+
+  const videoEl = document.querySelector(".bg-video");
+  let i = Math.floor(Math.random() * videos.length);
+
+  function trySet(idx, tried = 0) {
+    const src = videos[idx];
+    console.log("[bg-video] trying:", src);
+    videoEl.src = src;
+    videoEl.load();
+    videoEl.play().catch(()=>{});
+    videoEl.onerror = () => {
+      if (tried < videos.length - 1) {
+        const ni = (idx + 1) % videos.length;
+        console.warn("[bg-video] failed:", src, "-> fallback:", videos[ni]);
+        trySet(ni, tried + 1);
+      } else {
+        console.error("[bg-video] no working sources found");
+      }
+    };
+  }
+  trySet(i);
+})();
+</script>
 </html>
+
 
