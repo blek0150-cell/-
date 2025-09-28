@@ -129,38 +129,49 @@
   </footer>
 
   <script>
-const videos = [
-  "/video/video1.MP4",
-  "/video/video2.MP4",
-  "/video/video3.MP4",
-  "/video/video4.MP4",
-  "/video/video5.MP4",
-  "/video/video6.MP4",
-];
+(function(){
+  // База відносно поточного HTML (підтримує /repo/ і корінь)
+  const BASE = (document.querySelector('base')?.getAttribute('href'))
+            || (location.pathname.endsWith('/') 
+                ? location.pathname 
+                : location.pathname.replace(/[^/]+$/, '/'));
 
-const videoEl = document.querySelector(".bg-video");
-let idx = Math.floor(Math.random() * videos.length);
+  const rel = p => new URL(p, location.origin + BASE).pathname;
 
-function trySet(i, tried = 0) {
-  const src = videos[i];
-  console.log("[bg-video] trying:", src);
-  videoEl.src = src;
-  videoEl.load();
-  videoEl.play().catch(()=>{}); // автоплей часто молча ломается — ок
-  videoEl.onerror = () => {
-    if (tried < videos.length - 1) {
-      const ni = (i + 1) % videos.length;
-      console.warn("[bg-video] failed:", src, "-> fallback:", videos[ni]);
-      trySet(ni, tried + 1);
-    } else {
-      console.error("[bg-video] no working sources found");
-    }
-  };
-}
-trySet(idx);
+  const videos = [
+    rel("video/video1.MP4"),
+    rel("video/video2.MP4"),
+    rel("video/video3.MP4"),
+    rel("video/video4.MP4"),
+    rel("video/video5.MP4"),
+    rel("video/video6.MP4"),
+  ];
+
+  const videoEl = document.querySelector(".bg-video");
+  let i = Math.floor(Math.random() * videos.length);
+
+  function trySet(idx, tried = 0) {
+    const src = videos[idx];
+    console.log("[bg-video] trying:", src);
+    videoEl.src = src;
+    videoEl.load();
+    videoEl.play().catch(()=>{});
+    videoEl.onerror = () => {
+      if (tried < videos.length - 1) {
+        const ni = (idx + 1) % videos.length;
+        console.warn("[bg-video] failed:", src, "-> fallback:", videos[ni]);
+        trySet(ni, tried + 1);
+      } else {
+        console.error("[bg-video] no working sources found");
+      }
+    };
+  }
+  trySet(i);
+})();
 </script>
 </body>
 </html>
+
 
 
 
