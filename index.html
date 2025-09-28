@@ -130,20 +130,38 @@
 
   <script>
 const videos = [
-  "videos/video1.mp4",
-  "videos/video2.mp4",
-  "videos/video3.mp4",
-  "videos/video4.mp4",
-  "videos/video5.mp4",
-  "videos/video6.mp4",
+  "/videos/video1.mp4",
+  "/videos/video2.mp4",
+  "/videos/video3.mp4",
+  "/videos/video4.mp4",
+  "/videos/video5.mp4",
+  "/videos/video6.mp4",
 ];
 
 const videoEl = document.querySelector(".bg-video");
-const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-videoEl.src = randomVideo;
+let idx = Math.floor(Math.random() * videos.length);
+
+function trySet(i, tried = 0) {
+  const src = videos[i];
+  console.log("[bg-video] trying:", src);
+  videoEl.src = src;
+  videoEl.load();
+  videoEl.play().catch(()=>{}); // автоплей часто молча ломается — ок
+  videoEl.onerror = () => {
+    if (tried < videos.length - 1) {
+      const ni = (i + 1) % videos.length;
+      console.warn("[bg-video] failed:", src, "-> fallback:", videos[ni]);
+      trySet(ni, tried + 1);
+    } else {
+      console.error("[bg-video] no working sources found");
+    }
+  };
+}
+trySet(idx);
 </script>
 </body>
 </html>
+
 
 
 
