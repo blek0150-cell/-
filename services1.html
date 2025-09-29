@@ -16,14 +16,17 @@
     --accent: #e9e2dd;
     --hover: #795548;
   }
+
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
+
   html, body {
     height: 100%;
   }
+
   body {
     font-family: 'Forum', serif;
     color: var(--white);
@@ -47,6 +50,7 @@
     margin: 0 auto 80px;
     padding: 0 20px;
   }
+
   .layout.reverse {
     flex-direction: row-reverse;
   }
@@ -54,6 +58,7 @@
   .image {
     flex: 1;
   }
+
   .image img {
     width: 100%;
     height: auto;
@@ -67,22 +72,80 @@
     flex: 1;
     font-size: 1.1rem;
   }
+
   .text h2 {
     font-size: 2rem;
     margin-bottom: 15px;
   }
+
   .text h4 {
     margin-top: 20px;
     font-size: 1.2rem;
   }
+
   .text ul {
     padding-left: 20px;
     margin: 10px 0;
   }
+
   .text ul li {
     margin-bottom: 4px;
   }
+
+  /* --- Адаптив для мобильных --- */
+  @media (max-width: 768px) {
+    .layout {
+      flex-direction: column;
+      gap: 20px;
+      padding: 0 10px;
+    }
+
+    .layout.reverse {
+      flex-direction: column;
+    }
+
+    .text {
+      font-size: 1rem;
+    }
+
+    .text h2 {
+      font-size: 1.5rem;
+    }
+
+    .text h4 {
+      font-size: 1.1rem;
+      margin-top: 15px;
+    }
+
+    .image img {
+      max-height: 400px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .layout {
+      gap: 15px;
+      padding: 0 5px;
+    }
+
+    .text {
+      font-size: 0.95rem;
+    }
+
+    .text h2 {
+      font-size: 1.3rem;
+    }
+
+    .text h4 {
+      font-size: 1rem;
+    }
+
+    .image img {
+      max-height: 300px;
+    }
+  }
 </style>
+
 </head>
 <body>
 <main>
@@ -414,6 +477,7 @@
   </script>
 </body>
 </html>
+
 
 
 
