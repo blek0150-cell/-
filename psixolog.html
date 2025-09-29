@@ -45,6 +45,24 @@
       .layout.reverse > * { direction: ltr; }
     }
 
+    /* Для "перевернутого" блоку тільки на ПК */
+@media (min-width: 901px) {
+  .layout.reverse { direction: rtl; }
+  .layout.reverse > * { direction: ltr; }
+}
+
+/* На мобілці завжди текст зверху */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .layout.reverse { direction: ltr; }
+  .layout.reverse > * { direction: ltr; }
+  
+  /* Відступ між текстом і картинкою */
+  .text-card { margin-bottom: 24px; }
+  .image img { max-height: 70vh; width: auto; }
+}
+
+
     /* На мобілці завжди текст зверху */
     @media (max-width: 900px) {
       .layout {
@@ -219,6 +237,7 @@
   </script>
 </body>
 </html>
+
 
 
 
