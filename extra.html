@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
         body {
             background-color: #3b2f2f; /* Темно-коричневый фон */
             color: #ffffff;
-            font-family: 'Forum'; /* Один шрифт на всё */
+            font-family: 'Forum';
             font-size: 20px;
             margin: 0;
             padding: 0;
@@ -82,10 +82,36 @@
             margin-top: 20px;
             color: #ffffff;
         }
+
+        /* 🔹 Адаптив для мобільних */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            h1, h2 {
+                font-size: 22px;
+                margin: 20px 0;
+            }
+
+            .image-text {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .text-block {
+                max-width: 100%;
+                font-size: 18px;
+            }
+
+            .image-text img {
+                max-width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
-
     <section class="content">
         <h2>ОБ УСЛУГАХ <h2>
         <div class="section-content">
@@ -123,3 +149,4 @@
     </script>
 </body>
 </html>
+
