@@ -7,36 +7,6 @@
 
   <!-- Подключение шрифта Forum -->
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
-<style>
-  .layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(16px, 3vw, 32px);
-    width: min(1200px, 100%);
-    margin: 0 auto;
-    padding: clamp(16px, 4vw, 48px);
-    align-items: stretch;
-  }
-
-  /* Для "перевернутого" блоку тільки на ПК */
-  @media (min-width: 901px) {
-    .layout.reverse { direction: rtl; }
-    .layout.reverse > * { direction: ltr; }
-  }
-
-  /* На мобілці завжди текст зверху */
-  @media (max-width: 900px) {
-    .layout {
-      grid-template-columns: 1fr;
-    }
-    .layout.reverse {
-      direction: ltr; /* прибираємо переворот */
-    }
-    .layout.reverse > * {
-      direction: ltr;
-    }
-  }
-</style>
 
   <style>
     :root{
@@ -68,8 +38,26 @@
       padding: clamp(16px, 4vw, 48px);
       align-items: stretch;
     }
-    .layout.reverse { direction: rtl; }
-    .layout.reverse > * { direction: ltr; }
+
+    /* Для "перевернутого" блоку тільки на ПК */
+    @media (min-width: 901px) {
+      .layout.reverse { direction: rtl; }
+      .layout.reverse > * { direction: ltr; }
+    }
+
+    /* На мобілці завжди текст зверху */
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .layout.reverse {
+        direction: ltr; /* прибираємо переворот */
+      }
+      .layout.reverse > * {
+        direction: ltr;
+      }
+      .image img { max-height: 70vh; width: auto; }
+    }
 
     .text-card {
       background: var(--white);
@@ -83,23 +71,23 @@
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.8s ease, transform 0.8s ease;
-      font-size: 1.2em; /* збільшили базовий текст */
+      font-size: 1.2em;
     }
     .text-card.visible { opacity: 1; transform: translateY(0); }
 
     .text-card h1 { 
       margin-bottom: .5em; 
-      font-size: clamp(32px, 4vw, 48px); /* збільшили заголовки */
+      font-size: clamp(32px, 4vw, 48px);
     }
     .text-card h3 { 
       margin-top: 1em; 
       margin-bottom: .5em; 
-      font-size: 1.4em; /* збільшили підзаголовки */
+      font-size: 1.4em;
     }
     .text-card ul { margin-left: 1.2em; margin-bottom: 1em; }
     .text-card ul li { 
       margin-bottom: .5em; 
-      font-size: 1.15em; /* трохи більші елементи списку */
+      font-size: 1.15em;
     }
 
     .image {
@@ -123,7 +111,7 @@
     }
 
     /* Увеличенный текст только в 3-м блоке */
-    section:nth-of-type(3) .text-card { font-size: 1.3em; } /* чуть больше, чем у остальных */
+    section:nth-of-type(3) .text-card { font-size: 1.3em; }
 
     /* Увеличение картинки только в 3-м блоке */
     section:nth-of-type(3) .image img {
@@ -131,18 +119,9 @@
       height: auto;
       max-width: none;
     }
-
-    @media (max-width: 900px){
-      .layout, .layout.reverse { 
-        grid-template-columns: 1fr; 
-        direction: ltr; 
-      }
-      .image img { max-height: 70vh; width: auto; }
-    }
   </style>
 </head>
 <body>
-  <main>
     <section class="layout">
       <div class="text-card">
         <h1>Психологическая сессия</h1>
@@ -237,6 +216,7 @@
   </script>
 </body>
 </html>
+
 
 
 
