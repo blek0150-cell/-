@@ -1,4 +1,4 @@
-<!doctype html>  
+<!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
@@ -9,74 +9,54 @@
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
 
   <style>
-    :root{
+    :root {
       --bg: #3B2A24;
       --white: #ffffff;
       --text: #1a120e;
       --accent: #e9e2dd;
       --hover: #795548;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
+
+    * { box-sizing: border-box; margin:0; padding:0; }
+    html, body { height: 100%; }
+    body {
       font-family: 'Forum', serif;
       color: var(--white);
       background: var(--bg);
-      display:flex;
+      display: flex;
       flex-direction: column;
-      min-height:100vh;
+      min-height: 100vh;
     }
 
-    main{ padding-top: 40px; }
+    main { padding-top: 40px; }
 
     .layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: clamp(16px, 3vw, 32px);
       width: min(1200px, 100%);
-      margin: 0 auto 80px; /* відступ між секціями */
+      margin: 0 auto 80px;
       padding: clamp(16px, 4vw, 48px);
       align-items: stretch;
     }
 
-    /* Для "перевернутого" блоку тільки на ПК */
+    /* Перевернутые блоки на ПК */
     @media (min-width: 901px) {
       .layout.reverse { direction: rtl; }
       .layout.reverse > * { direction: ltr; }
     }
 
-    /* Для "перевернутого" блоку тільки на ПК */
-@media (min-width: 901px) {
-  .layout.reverse { direction: rtl; }
-  .layout.reverse > * { direction: ltr; }
-}
-
-/* На мобілці завжди текст зверху */
-@media (max-width: 900px) {
-  .layout { grid-template-columns: 1fr; }
-  .layout.reverse { direction: ltr; }
-  .layout.reverse > * { direction: ltr; }
-  
-  /* Відступ між текстом і картинкою */
-  .text-card { margin-bottom: 24px; }
-  .image img { max-height: 70vh; width: auto; }
-}
-
-
-    /* На мобілці завжди текст зверху */
+    /* На мобилке фото сверху, текст под ним */
     @media (max-width: 900px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-      .layout.reverse {
-        direction: ltr; /* прибираємо переворот */
-      }
-      .layout.reverse > * {
+      .layout { grid-template-columns: 1fr; }
+      .layout.reverse, .layout {
         direction: ltr;
       }
-
-      /* Відступи між текстом і картинкою */
-      .text-card { margin-bottom: 24px; }
+      .layout.reverse > *, .layout > * {
+        display: flex;
+        flex-direction: column;
+      }
+      .text-card { margin-top: 24px; }
       .image img { max-height: 70vh; width: auto; }
     }
 
@@ -143,6 +123,7 @@
   </style>
 </head>
 <body>
+  <main>
     <section class="layout">
       <div class="text-card">
         <h1>Психологическая сессия</h1>
@@ -226,7 +207,7 @@
     }, { threshold: 0.2 });
     elements.forEach(el => observer.observe(el));
 
-    // Параллакс для картинок (без конфликта с появлением)
+    // Параллакс для картинок
     window.addEventListener('scroll', () => {
       document.querySelectorAll('.image img').forEach(img => {
         const rect = img.getBoundingClientRect();
