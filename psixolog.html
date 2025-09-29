@@ -7,6 +7,36 @@
 
   <!-- Подключение шрифта Forum -->
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+<style>
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(16px, 3vw, 32px);
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: clamp(16px, 4vw, 48px);
+    align-items: stretch;
+  }
+
+  /* Для "перевернутого" блоку тільки на ПК */
+  @media (min-width: 901px) {
+    .layout.reverse { direction: rtl; }
+    .layout.reverse > * { direction: ltr; }
+  }
+
+  /* На мобілці завжди текст зверху */
+  @media (max-width: 900px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+    .layout.reverse {
+      direction: ltr; /* прибираємо переворот */
+    }
+    .layout.reverse > * {
+      direction: ltr;
+    }
+  }
+</style>
 
   <style>
     :root{
@@ -207,5 +237,6 @@
   </script>
 </body>
 </html>
+
 
 
