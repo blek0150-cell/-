@@ -13,8 +13,6 @@
       --bg: #3B2A24;
       --white: #ffffff;
       --text: #1a120e;
-      --accent: #e9e2dd;
-      --hover: #795548;
     }
 
     * { box-sizing: border-box; margin:0; padding:0; }
@@ -31,33 +29,13 @@
     main { padding-top: 40px; }
 
     .layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column; /* картинка сверху, текст под ней */
       gap: clamp(16px, 3vw, 32px);
       width: min(1200px, 100%);
       margin: 0 auto 80px;
       padding: clamp(16px, 4vw, 48px);
-      align-items: stretch;
-    }
-
-    /* Перевернутые блоки на ПК */
-    @media (min-width: 901px) {
-      .layout.reverse { direction: rtl; }
-      .layout.reverse > * { direction: ltr; }
-    }
-
-    /* На мобилке фото сверху, текст под ним */
-    @media (max-width: 900px) {
-      .layout { grid-template-columns: 1fr; }
-      .layout.reverse, .layout {
-        direction: ltr;
-      }
-      .layout.reverse > *, .layout > * {
-        display: flex;
-        flex-direction: column;
-      }
-      .text-card { margin-top: 24px; }
-      .image img { max-height: 70vh; width: auto; }
+      align-items: center;
     }
 
     .text-card {
@@ -73,23 +51,15 @@
       transform: translateY(30px);
       transition: opacity 0.8s ease, transform 0.8s ease;
       font-size: 1.2em;
+      width: 100%;
+      max-width: 700px;
     }
     .text-card.visible { opacity: 1; transform: translateY(0); }
 
-    .text-card h1 { 
-      margin-bottom: .5em; 
-      font-size: clamp(32px, 4vw, 48px);
-    }
-    .text-card h3 { 
-      margin-top: 1em; 
-      margin-bottom: .5em; 
-      font-size: 1.4em;
-    }
+    .text-card h1 { margin-bottom: .5em; font-size: clamp(32px, 4vw, 48px); }
+    .text-card h3 { margin-top: 1em; margin-bottom: .5em; font-size: 1.4em; }
     .text-card ul { margin-left: 1.2em; margin-bottom: 1em; }
-    .text-card ul li { 
-      margin-bottom: .5em; 
-      font-size: 1.15em;
-    }
+    .text-card ul li { margin-bottom: .5em; font-size: 1.15em; }
 
     .image {
       border-radius: 16px;
@@ -98,33 +68,53 @@
       justify-content: center;
       align-items: center;
       opacity: 0;
-      transform: scale(0.95);
+      transform: scale(0.98);
       transition: opacity 0.8s ease, transform 0.8s ease;
       overflow: hidden;
+      width: 100%;
     }
     .image.visible { opacity: 1; transform: scale(1); }
+
     .image img {
-      max-width: 100%;
-      height: auto;
       display: block;
+      width: 100%;
+      max-width: none;
+      height: auto;
       transition: transform 0.3s ease-out;
       will-change: transform;
     }
 
-    /* Увеличенный текст только в 3-м блоке */
-    section:nth-of-type(3) .text-card { font-size: 1.3em; }
+    /* Увеличение картинок */
+    section:nth-of-type(1) .image img { width: 105%; }
+    section:nth-of-type(2) .image img { width: 110%; }
+    section:nth-of-type(3) .image img { width: 110%; }
 
-    /* Увеличение картинки только в 3-м блоке */
-    section:nth-of-type(3) .image img {
-      width: 110%;
-      height: auto;
-      max-width: none;
+    /* Адаптив для планшетов и мобилок */
+    @media (max-width: 900px) {
+      .text-card { font-size: 1.1em; padding: 18px; }
+      .text-card h1 { font-size: 2rem; }
+      .text-card h3 { font-size: 1.2rem; }
+      .text-card ul li { font-size: 1rem; }
+      .image img { width: 100%; max-height: 60vh; }
+    }
+
+    @media (max-width: 480px) {
+      .layout { padding: 10px; gap: 10px; }
+      .text-card { font-size: 1em; padding: 12px; }
+      .text-card h1 { font-size: 1.5em; }
+      .text-card h3 { font-size: 1.05em; }
+      .text-card ul li { font-size: 0.95em; }
+      .image img { max-height: 50vh; width: 100%; }
     }
   </style>
 </head>
 <body>
   <main>
+    <!-- 1 блок -->
     <section class="layout">
+      <div class="image">
+        <img src="2.avif" alt="Психологическая сессия">
+      </div>
       <div class="text-card">
         <h1>Психологическая сессия</h1>
         <h3>Как мы работаем:</h3>
@@ -137,12 +127,10 @@
           <li>Адаптирую процесс под каждого</li>
         </ul>
       </div>
-      <div class="image">
-        <img src="2.avif" alt="Психологическая сессия">
-      </div>
     </section>
 
-    <section class="layout reverse">
+    <!-- 2 блок -->
+    <section class="layout">
       <div class="image">
         <img src="3.avif" alt="Психология и имидж">
       </div>
@@ -168,7 +156,11 @@
       </div>
     </section>
 
+    <!-- 3 блок -->
     <section class="layout">
+      <div class="image">
+        <img src="4.avif" alt="Психология, имидж и контент">
+      </div>
       <div class="text-card">
         <h1>Глубинная работа — психология, имидж и контент</h1>
         <h3>Кому подходит:</h3>
@@ -188,14 +180,10 @@
         </ul>
         <p><strong>Стоимость:</strong> от 80 000 ֏</p>
       </div>
-      <div class="image">
-        <img src="4.avif" alt="Психология, имидж и контент">
-      </div>
     </section>
   </main>
 
   <script>
-    // Появление элементов
     const elements = document.querySelectorAll('.text-card, .image');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -207,7 +195,6 @@
     }, { threshold: 0.2 });
     elements.forEach(el => observer.observe(el));
 
-    // Параллакс для картинок
     window.addEventListener('scroll', () => {
       document.querySelectorAll('.image img').forEach(img => {
         const rect = img.getBoundingClientRect();
@@ -218,7 +205,6 @@
   </script>
 </body>
 </html>
-
 
 
 
