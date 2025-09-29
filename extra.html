@@ -95,24 +95,26 @@
             }
 
             .image-text {
-                flex-direction: column;
+                flex-direction: column !important; /* фото завжди зверху */
                 gap: 20px;
                 text-align: center;
             }
 
-            .text-block {
-                max-width: 100%;
-                font-size: 18px;
+            .image-text img {
+                order: -1; /* ставимо картинку першою */
+                max-width: 90%;
             }
 
-            .image-text img {
-                max-width: 90%;
+            .text-block {
+                order: 2;
+                max-width: 100%;
+                font-size: 18px;
             }
         }
     </style>
 </head>
 <body>
-    <section class="content">
+ <section class="content">
         <h2>ОБ УСЛУГАХ <h2>
         <div class="section-content">
             <div class="image-text">
@@ -149,4 +151,5 @@
     </script>
 </body>
 </html>
+
 
