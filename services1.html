@@ -1,91 +1,117 @@
-<!DOCTYPE html> 
+<!doctype html>  
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Сюзан Мкртчян — Услуги</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Сюзан Мкртчян — Услуги</title>
 
-<!-- Подключение шрифта Forum -->
-<link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+  <!-- Подключение шрифта Forum -->
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
 
-<style>
-  :root {
-    --bg: #3B2A24;
-    --white: #ffffff;
-    --text: #1a120e;
-    --accent: #e9e2dd;
-    --hover: #795548;
-  }
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  html, body {
-    height: 100%;
-  }
-  body {
-    font-family: 'Forum', serif;
-    color: var(--white);
-    background: var(--bg);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    line-height: 1.6;
-  }
+  <style>
+    :root{
+      --bg: #3B2A24;
+      --white: #ffffff;
+      --text: #1a120e;
+      --accent: #e9e2dd;
+      --hover: #795548;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Forum', serif;
+      color: var(--white);
+      background: var(--bg);
+      display:flex;
+      flex-direction: column;
+      min-height:100vh;
+    }
 
-  main {
-    padding: 40px 0;
-  }
+    main{ padding-top: 40px; }
 
-  /* Сетка для секций */
-  .layout {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    width: min(1200px, 100%);
-    margin: 0 auto 80px;
-    padding: 0 20px;
-  }
-  .layout.reverse {
-    flex-direction: row-reverse;
-  }
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(16px, 3vw, 32px);
+      width: min(1200px, 100%);
+      margin: 0 auto;
+      padding: clamp(16px, 4vw, 48px);
+      align-items: stretch;
+    }
+    .layout.reverse { direction: rtl; }
+    .layout.reverse > * { direction: ltr; }
 
-  .image {
-    flex: 1;
-  }
-  .image img {
-    width: 100%;
-    height: auto;
-    max-height: 760px;
-    object-fit: cover;
-    border-radius: 17px;
-    display: block;
-  }
+    .text-card {
+      background: var(--white);
+      color: var(--text);
+      padding: clamp(18px, 3vw, 36px);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      font-size: 1.2em; /* збільшили базовий текст */
+    }
+    .text-card.visible { opacity: 1; transform: translateY(0); }
 
-  .text {
-    flex: 1;
-    font-size: 1.1rem;
-  }
-  .text h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-  }
-  .text h4 {
-    margin-top: 20px;
-    font-size: 1.2rem;
-  }
-  .text ul {
-    padding-left: 20px;
-    margin: 10px 0;
-  }
-  .text ul li {
-    margin-bottom: 4px;
-  }
-</style>
+    .text-card h1 { 
+      margin-bottom: .5em; 
+      font-size: clamp(32px, 4vw, 48px); /* збільшили заголовки */
+    }
+    .text-card h3 { 
+      margin-top: 1em; 
+      margin-bottom: .5em; 
+      font-size: 1.4em; /* збільшили підзаголовки */
+    }
+    .text-card ul { margin-left: 1.2em; margin-bottom: 1em; }
+    .text-card ul li { 
+      margin-bottom: .5em; 
+      font-size: 1.15em; /* трохи більші елементи списку */
+    }
+
+    .image {
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      overflow: hidden;
+    }
+    .image.visible { opacity: 1; transform: scale(1); }
+    .image img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease-out;
+      will-change: transform;
+    }
+
+    /* Увеличенный текст только в 3-м блоке */
+    section:nth-of-type(3) .text-card { font-size: 1.3em; } /* чуть больше, чем у остальных */
+
+    /* Увеличение картинки только в 3-м блоке */
+    section:nth-of-type(3) .image img {
+      width: 110%;
+      height: auto;
+      max-width: none;
+    }
+
+    @media (max-width: 900px){
+      .layout, .layout.reverse { 
+        grid-template-columns: 1fr; 
+        direction: ltr; 
+      }
+      .image img { max-height: 70vh; width: auto; }
+    }
+  </style>
 </head>
 <body>
-<main>
    <!-- 1 -->
     <section class="service">
       <div class="layout">
@@ -413,6 +439,7 @@
   </script>
 </body>
 </html>
+
 
 
 
