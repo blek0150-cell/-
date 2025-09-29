@@ -7,7 +7,7 @@
 
   <!-- Подключение шрифта Forum -->
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
-
+<style>
 <style>
   :root {
     --bg: #3B2A24;
@@ -30,20 +30,15 @@
 
   main { padding-top: 40px; }
 
+  /* --- Сетки блоков --- */
   .layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column; /* картинка сверху */
     gap: clamp(16px, 3vw, 32px);
     width: min(1200px, 100%);
     margin: 0 auto 80px;
     padding: clamp(16px, 4vw, 48px);
-    align-items: stretch;
-  }
-
-  /* Перевернутые блоки на ПК */
-  @media (min-width: 901px) {
-    .layout.reverse { direction: rtl; }
-    .layout.reverse > * { direction: ltr; }
+    align-items: center;
   }
 
   .text-card {
@@ -59,6 +54,8 @@
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
     font-size: 1.2em;
+    width: 100%;
+    max-width: 700px;
   }
   .text-card.visible { opacity: 1; transform: translateY(0); }
 
@@ -84,11 +81,13 @@
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.98);
     transition: opacity 0.8s ease, transform 0.8s ease;
     overflow: hidden;
+    width: 100%;
   }
   .image.visible { opacity: 1; transform: scale(1); }
+
   .image img {
     max-width: 100%;
     height: auto;
@@ -97,40 +96,30 @@
     will-change: transform;
   }
 
-  /* Увеличенный текст и картинка только в 3-м блоке */
-  section:nth-of-type(3) .text-card { font-size: 1.3em; }
-  section:nth-of-type(3) .image img {
-    width: 110%;
-    height: auto;
-    max-width: none;
-  }
+  /* Увеличение картинок: первая чуть больше, вторая и третья заметно */
+  section:nth-of-type(1) .image img { width: 105%; }
+  section:nth-of-type(2) .image img { width: 110%; }
+  section:nth-of-type(3) .image img { width: 110%; }
 
   /* --- Адаптив для планшетов --- */
   @media (max-width: 900px) {
-    .layout { grid-template-columns: 1fr; direction: ltr; }
-    .layout.reverse, .layout { direction: ltr; }
-    .layout.reverse > *, .layout > * {
-      display: flex;
-      flex-direction: column;
-    }
-    .text-card { margin-top: 24px; font-size: 1.1em; }
-    .image img { max-height: 60vh; width: 100%; }
+    .text-card { font-size: 1.1em; padding: 18px; }
     .text-card h1 { font-size: 2rem; }
     .text-card h3 { font-size: 1.2rem; }
     .text-card ul li { font-size: 1rem; }
+    .image img { width: 100%; max-height: 60vh; }
   }
 
   /* --- Адаптив для мобильных экранов --- */
   @media (max-width: 480px) {
     .layout { padding: 10px; gap: 10px; }
     .text-card { font-size: 1em; padding: 12px; }
-    .text-card h1 { font-size: 1.6em; }
-    .text-card h3 { font-size: 1.1em; }
-    .text-card ul li { font-size: 1em; }
+    .text-card h1 { font-size: 1.5em; }
+    .text-card h3 { font-size: 1.05em; }
+    .text-card ul li { font-size: 0.95em; }
     .image img { max-height: 50vh; width: 100%; }
   }
 </style>
-
 </head>
 <body>
   <main>
@@ -228,6 +217,7 @@
   </script>
 </body>
 </html>
+
 
 
 
