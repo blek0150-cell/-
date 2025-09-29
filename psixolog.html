@@ -34,7 +34,7 @@
       grid-template-columns: 1fr 1fr;
       gap: clamp(16px, 3vw, 32px);
       width: min(1200px, 100%);
-      margin: 0 auto;
+      margin: 0 auto 80px; /* відступ між секціями */
       padding: clamp(16px, 4vw, 48px);
       align-items: stretch;
     }
@@ -56,6 +56,9 @@
       .layout.reverse > * {
         direction: ltr;
       }
+
+      /* Відступи між текстом і картинкою */
+      .text-card { margin-bottom: 24px; }
       .image img { max-height: 70vh; width: auto; }
     }
 
@@ -216,6 +219,7 @@
   </script>
 </body>
 </html>
+
 
 
 
