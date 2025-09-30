@@ -9,19 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
 
 <style>
-  /* Початковий стан */
-.text, .image {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-
-/* Коли елемент з’являється */
-.text.visible, .image.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
   :root {
     --bg: #3B2A24;
     --white: #ffffff;
@@ -157,6 +144,18 @@
       max-height: 300px;
     }
   }
+  /* Початковий стан */
+.text, .image {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+/* Коли елемент з’являється */
+.text.visible, .image.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 
 </head>
@@ -490,6 +489,7 @@
   </script>
 </body>
 </html>
+
 
 
 
