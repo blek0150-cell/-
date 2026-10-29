@@ -116,27 +116,7 @@ section:nth-of-type(3) .image img {
     </div>
   </section>
 
-// Появление элементов
-const elements = document.querySelectorAll('.text-card, .image');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-elements.forEach(el => observer.observe(el));
 
-// Параллакс картинок
-window.addEventListener('scroll', () => {
-  document.querySelectorAll('.image img').forEach(img => {
-    const rect = img.getBoundingClientRect();
-    const offset = rect.top / window.innerHeight;
-    img.style.transform = `translateY(${offset * 20 - 10}px)`;
-  });
-});
-</script>
 </body>
 </html>
 
